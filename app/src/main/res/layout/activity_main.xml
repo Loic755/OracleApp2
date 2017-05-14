@@ -9,10 +9,51 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World Oracle3!"
+        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="25dp" />
+
+        <CheckBox
+            android:id="@+id/uno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rojo"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="301dp" />
+
+        <CheckBox
+            android:id="@+id/dos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Azul"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="359dp" />
+
+        <CheckBox
+            android:id="@+id/tres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amarillo"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="419dp" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
