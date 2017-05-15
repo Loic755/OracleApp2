@@ -18,16 +18,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FrutasVerduras frutasVerduras_datos[] = new FrutasVerduras[]{
+                new FrutasVerduras(R.mipmap.ic_launcher,"Manzana"),
+                new FrutasVerduras(R.mipmap.ic_launcher,"Pepino"),
+                new FrutasVerduras(R.mipmap.ic_launcher,"Mango"),
+                new FrutasVerduras(R.mipmap.ic_launcher,"Pera"),
+
+
+        };
+
+        FrutasVerdurasAdapter adapter = new FrutasVerdurasAdapter(this, R.layout.listview_item_row,frutasVerduras_datos);
         listView = (ListView) findViewById(R.id.listview);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,elementos);
+        View header = (View) getLayoutInflater().inflate(R.layout.list_header_row,null);
 
+        listView.addHeaderView(header);
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(),String.valueOf(position),Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 }
