@@ -27,8 +27,8 @@ public class FrutasVerdurasAdapter extends ArrayAdapter<FrutasVerduras> {
         this.mydata = data;
     }
 
-    public View getView(int position, View converView, ViewGroup parent){
-        View row = converView;
+    public View getView(int position, View convertView, ViewGroup parent){
+        View row = convertView;
         FrutasVerdurasHolder holder = null;
 
         if (row == null){
@@ -36,10 +36,11 @@ public class FrutasVerdurasAdapter extends ArrayAdapter<FrutasVerduras> {
             row = inflater.inflate(mylayoutRessourceID,parent,false);
             holder = new FrutasVerdurasHolder();
             holder.imagen = (ImageView) row.findViewById(R.id.image);
-            holder.textView=(TextView) row.findViewById(R.id.texto);
-        }else{
+            holder.textView=(TextView) row.findViewById(R.id.tv);
+            row.setTag(holder);
+        }
+        else{
             holder = (FrutasVerdurasHolder)row.getTag();
-
         }
 
         FrutasVerduras frutasVerduras = mydata[position];
