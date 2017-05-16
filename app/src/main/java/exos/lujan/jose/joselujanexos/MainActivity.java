@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
         webView = (WebView) findViewById(R.id.webview);
         webView.loadUrl("http://www.google.com");
 
+        //Un comment if want to load a page local and not via internet
+     //   String url="file:///android_asset/index.html";
+    //    webView.loadUrl(url);
+
         webView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url)
             {
