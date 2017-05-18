@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // call AsynTask to perform network operation on separate thread
-        new HttpAsyncTask().execute("http://hmkcode.com/examples/index.php");
+         new HttpAsyncTask().execute("http://hmkcode.com/examples/index.php");
+        //   new HttpAsyncTask().execute("http://10.75.92.209/rs/msr/sub/MSISDN/6668901223/data");
+        //new HttpAsyncTask().execute("http://ocudr/rs/msr/sub/MSISDN/6668901223/data");
     }
 
     public static String GET(String url){
