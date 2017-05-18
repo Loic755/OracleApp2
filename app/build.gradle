@@ -1,16 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/LICENSE.txt'
-    }
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
-    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "exos.lujan.jose.joselujanexos"
         minSdkVersion 23
@@ -28,9 +20,6 @@ android {
 }
 
 dependencies {
-    compile 'org.apache.httpcomponents:httpcore:4.4.3'
-    //compile 'org.apache.httpcomponents:httpclient:4.5'
-    compile group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5.1'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
