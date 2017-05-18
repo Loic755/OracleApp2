@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             // receive response as inputStream
             inputStream = httpResponse.getEntity().getContent();
 
-            // convert inputstream to string
+            // convert inputstream to string.
             if(inputStream != null)
                 result = convertInputStreamToString(inputStream);
             else
