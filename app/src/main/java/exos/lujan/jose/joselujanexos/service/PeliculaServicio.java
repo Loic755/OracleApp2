@@ -1,5 +1,8 @@
 package exos.lujan.jose.joselujanexos.service;
 
+import org.simpleframework.xml.ElementList;
+import org.w3c.dom.Comment;
+
 import java.util.List;
 
 import exos.lujan.jose.joselujanexos.model.Pelicula;
@@ -12,6 +15,6 @@ import retrofit.http.GET;
 
 public interface PeliculaServicio {
     @GET("/rs/msr/sub/MSISDN/6668901223/data/")
-    //Call<List<Student>> getPeopleDetails();
     void getPelicula(Callback<List<Pelicula>> callback);
+
 }

@@ -29,5 +29,10 @@ dependencies {
     compile 'com.android.support:design:22.2.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.okhttp:okhttp:2.7.2'
+    compile ('com.squareup.retrofit:converter-simplexml:1.9.0') {
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude module: 'stax-api'
+    }
+
     testCompile 'junit:junit:4.12'
 }

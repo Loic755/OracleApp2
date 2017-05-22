@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.squareup.okhttp.OkHttpClient;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -17,6 +20,7 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.OkClient;
 import retrofit.client.Response;
+import retrofit.converter.SimpleXMLConverter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
         textDetails = (TextView) findViewById(R.id.textDetails);
 
-        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("http://10.75.92.209:8787/").build();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("http://10.75.92.209:8787/")
+                .setClient(new OkClient(new OkHttpClient()))
+                .setConverter(new SimpleXMLConverter())
+                .build();
 
         PeliculaServicio servicio = restAdapter.create(PeliculaServicio.class);
         servicio.getPelicula(new Callback<List<Pelicula>>() {
