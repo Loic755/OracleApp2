@@ -1,6 +1,5 @@
 package exos.lujan.jose.joselujanexos;
 import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,17 +9,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import java.io.IOException;
 import java.util.List;
-import exos.lujan.jose.joselujanexos.model.Student;
-import exos.lujan.jose.joselujanexos.service.APIService;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.R.id.message;
+import exos.lujan.jose.joselujanexos.model.Pelicula;
+import exos.lujan.jose.joselujanexos.service.PeliculaServicio;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.OkClient;
+import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,56 +32,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textDetails = (TextView) findViewById(R.id.textDetails);
-        btnGetData = (Button) findViewById(R.id.btnGetData);
-        btnInsertData = (Button) findViewById(R.id.buttbtnInsertData);
-        editName = (EditText) findViewById(R.id.editname);
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Please wait...");
-        pDialog.setCancelable(false);
-        Log.d("test3 : ", "test3 : ");
-        btnGetData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    getPeopleDetails();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
-                Log.d("test1 : ", "test1 : ");
-            }
-        });
+        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("http://10.75.92.209:8787/").build();
+
+        PeliculaServicio servicio = restAdapter.create(PeliculaServicio.class);
+        servicio.getPelicula(new Callback<List<Pelicula>>() {
+                                 @Override
+                                 public void success(List<Pelicula> peliculas, Response response) {
+                                     textDetails.setText("SUCCESS : ");
+                                 }
+
+                                 @Override
+                                 public void failure(RetrofitError error) {
+                                     textDetails.setText("FAILURE : "+error.getMessage());
+                                 }
+                             });
 
     }
-    private void getPeopleDetails () throws IOException {
-        Log.d("test2 : ", "test2 : ");
-
-        //  showpDialog();
-        final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.75.92.209:8787/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        APIService service = retrofit.create(APIService.class);
-        Call<List<Student>> call = service.getPeopleDetails();
-
-        call.enqueue(new Callback<List<Student>>() {
-            // Log.d("test1 : ", "test1 : ");
-            @Override
-            public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
-                List<Student> students = response.body();
-
-                String details = "test";
-
-                textDetails.setText(details);
-                //  hidepDialog();
-            }
-
-            @Override
-            public void onFailure(Call<List<Student>> call, Throwable t) {
-                //  hidepDialog();
-                textDetails.setText("FAILURE !"+t.getMessage());
-            }
-        });
-    };
 }
+
