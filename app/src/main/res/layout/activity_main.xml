@@ -6,10 +6,18 @@
     android:layout_height="match_parent"
     tools:context="exos.lujan.jose.joselujanexos.MainActivity">
 
+    <com.androidplot.xy.XYPlot android:layout_height="400dp"
+        android:layout_width="fill_parent"
+        android:id="@+id/myXYPlot"
+        androidPlot.legendWidget.heightMetric.value="100dp"
+        androidPlot.legendWidget.widthMetric.value="100dp"
+        androidPlot.titleWidget.labelPaint.textSize="100dp"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="CPU and memory graphic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
